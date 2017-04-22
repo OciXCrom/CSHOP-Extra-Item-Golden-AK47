@@ -5,7 +5,7 @@
 #include <fun>
 #include <hamsandwich>
 
-#define PLUGIN_VERSION "1.2"
+#define PLUGIN_VERSION "4.x"
 
 additem ITEM_GOLDENAK
 #define GOLDENAK_ID "goldenak"
@@ -79,7 +79,7 @@ public cshopItemRemoved(id, iItem)
 	
 public eventTakeDamage(iVictim, iInflictor, iAttacker, Float:flDamage, iDamageBits)
 	if(is_user_alive(iAttacker) && iAttacker != iVictim)
-		if(g_blGoldenAK[iAttacker])
+		if(g_blGoldenAK[iAttacker] && get_user_weapon(iAttacker) == GOLDENAK_WEAPON_CSW && iAttacker == iInflictor)
 			SetHamParamFloat(4, flDamage * GOLDENAK_DAMAGE)
 			
 #if defined USE_BULLETS			
